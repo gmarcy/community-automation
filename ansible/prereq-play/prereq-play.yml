@@ -4,7 +4,7 @@
   roles:
     - oc_client_install
   tasks:
-    - name: install required pyhon libaries
+    - name: install required python libaries
       pip:
         name:
          - boto
