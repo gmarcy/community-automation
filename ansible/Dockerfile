@@ -1,9 +1,9 @@
-FROM registry.access.redhat.com/ubi9/podman
+FROM registry.access.redhat.com/ubi10/podman
 
 RUN set -x && \
     dnf --disableplugin=subscription-manager update -y && \
     dnf --disableplugin=subscription-manager upgrade -y && \
-    dnf --disableplugin=subscription-manager install -y python3-pip jq openssh-clients git wget sudo vim sshpass && \
+    dnf --disableplugin=subscription-manager install -y python3-pip jq openssh-clients git wget sudo vim && \
     dnf --disableplugin=subscription-manager autoremove
 
 ARG USER=runner
