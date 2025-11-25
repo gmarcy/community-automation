@@ -29,13 +29,9 @@ RUN set -x && \
     python3 -m pip install --no-cache-dir --upgrade --user netaddr && \
     python3 -m pip install --no-cache-dir --upgrade --user dnspython
 
-LABEL ansible-automation.description="Ansible automation I have gathered in my travels over the years combined into a layout I have found to be useful."
-LABEL ansible-automation.maintainer="Glenn Marcy <ansible-automation@gmarcy.com>"
-LABEL ansible-automation.thanks="https://github.com/IBM/community-automation, https://github.com/Kubeinit/kubeinit, and many others for the pearls of wisdom you have shown me."
-
 ENTRYPOINT ["ansible-playbook", "-e", "running_in_container=true"]
 
 COPY --chown=${USER}:0 . .
 
 RUN set -x && \
-    ansible-playbook -vvv -i prereq-play/inventory prereq-play/prereq-play.yml
+    ansible-playbook -vvv -i prereq-play/inventory prereq-play/prereq-play.yml playbooks/build-galaxy-collection.yml
