@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/podman
+FROM registry.access.redhat.com/ubi9/podman
 
 RUN set -x && \
     dnf --disableplugin=subscription-manager update -y && \
