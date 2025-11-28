@@ -44,6 +44,7 @@ jobs:
           tags: |
             type=raw,value=${{ steps.date.outputs.date }}
             type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=${{ github.ref_name }},enable=${{ github.ref_name != 'master' }}
 
       - name: Build and push
         uses: docker/build-push-action@v6.5.0
